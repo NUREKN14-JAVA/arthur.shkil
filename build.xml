@@ -17,7 +17,7 @@
 	</target>
 	
 	<target name="test-compile">
-		<javac srcdir="${ain-java-dir}"  destdir="${build-dir}"/>
+		<javac srcdir="${test-java-dir}"  destdir="${build-dir}"/>
 	</target>
 	
 	<target name="test">
