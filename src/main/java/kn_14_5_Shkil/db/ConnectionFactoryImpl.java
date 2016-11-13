@@ -22,11 +22,13 @@ public class ConnectionFactoryImpl implements ConnectionFactory {
 
 	@Override
 	public Connection createConnection() throws DatabaseException {
+
 		try {
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		}
+		
 		try {
 			return DriverManager.getConnection(url, user, password);
 		} catch (SQLException e) {

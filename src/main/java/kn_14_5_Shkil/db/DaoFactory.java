@@ -33,14 +33,17 @@ public class DaoFactory {
 	}
 	
 	public User user() {
+
 		User result = null;
+
 		try {
-			Class clazz	= Class.forName(properties.getProperty(USER_DAO));
-			result = (User) clazz.newInstance();
+			Class userClass	= Class.forName(properties.getProperty(USER_DAO));
+			result = (User) userClass.newInstance();
 			result.setConnectionFactory(getConnectionFactory());;
-		} catch (Exception e) {
-			throw new RuntimeException(e); 
+		} catch (Exception error) {
+			throw new RuntimeException(error); 
 		}
+		
 		return result;
 	}
 

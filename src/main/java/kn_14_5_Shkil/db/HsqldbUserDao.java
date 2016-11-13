@@ -61,7 +61,9 @@ class HsqldbUser implements User {
 
 	@Override
 	public User update(User user) throws DatabaseException {
+
 		try {
+
 			Connection connection = connectionFactory.createConnection();
 			PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY);
 			statement.setString(1, user.firstName());
@@ -85,7 +87,9 @@ class HsqldbUser implements User {
 
 	@Override
 	public User delete(User user) throws DatabaseException {
+
 		try {
+
 			Connection connection = connectionFactory.createConnection();
 			PreparedStatement statement = connection.prepareStatement("DELETE FROM users WHERE id=?");
 			statement.setLong(1, user.Id());
@@ -96,6 +100,7 @@ class HsqldbUser implements User {
 			statement.close();
 			connection.close();
 			return user;
+
 		} catch (DatabaseException error) {
 			throw error;
 
@@ -106,7 +111,9 @@ class HsqldbUser implements User {
 
 	@Override
 	public User find(Long id) throws DatabaseException {
+
 		User user=null;
+
 		try {
 			Connection connection = connectionFactory.createConnection();
 			PreparedStatement statement = connection.prepareStatement("SELECT id, firstName, lastName, dateofbirth FROM users WHERE id=?");
@@ -121,9 +128,11 @@ class HsqldbUser implements User {
 				user.setlastName(new String(resultSet.String(3)));
 				user.setdateOfBirthd(resultSet.Date(4));		
 			}
+
 			if (n!=1) {
 				throw new DatabaseException("Number of the selected rows: " + n);
 			}
+			
 		} catch (DatabaseException error) {
 			throw error;
 		} catch (SQLException error) {
