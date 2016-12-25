@@ -17,7 +17,7 @@
 	</target>
 	
 	<target name="test-compile">
-		<javac srcdir="${ain-java-dir}"  destdir="${build-dir}"/>
+		<javac srcdir="${test-java-dir}"  destdir="${build-dir}"/>
 	</target>
 	
 	<target name="test">
@@ -26,7 +26,7 @@
 				<pathelement location="${build-dir}"/>
 			</classpath>
 			<formatter type="plain"/>
-			<test name="kn_14_5_Shkil.UserTest"></test>
+			<test name="com.krasnorudsky.usermanagement.UserTest"></test>
 		</junit>
 	</target>
 </project>
